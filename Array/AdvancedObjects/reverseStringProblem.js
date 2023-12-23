@@ -1,3 +1,4 @@
+// String ===> arrays of characters
 
 // 'Hi My name is Andrei' should be:
 // 'ierdnA si eman yM iH'

@@ -44,4 +44,7 @@ function mergeSortedArrays(arr1, arr2){
     return mergedArray
 }
 
-console.log(mergeSortedArrays([0,3,4],[4,6,30]))
+// console.log(mergeSortedArrays([0,3,4],[4,6,30]))
+
+const array = [[1,2], [3,4]]
+console.log(array[1])

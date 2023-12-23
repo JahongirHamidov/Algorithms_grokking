@@ -25,18 +25,48 @@ class HashTable{
             hash = (hash + key.charCodeAt(i)*i)% this.data.length
         }
         return hash
-    }
+    }  // O(1)
     set(key,value){
         const keyHashed = myHashTable._hash(key)
-        this.data[keyHashed] = value
-    }
+        if(!this.data[keyHashed]){   //if there's no data at that index create an empty linked list
+            this.data[keyHashed] = []
+        } 
+        this.data[keyHashed].push([key, value])
+        return this.data
+    }  // O(1)
     get(key){
         const keyHashed = myHashTable._hash(key)
-        return this.data[keyHashed]
+        const currentBucket =  this.data[keyHashed]
+        // console.log(currentBucket)
+        if (currentBucket){
+            for ( let i = 0; i< currentBucket.length; i++){
+                if(currentBucket[i][0] === key){
+                    return currentBucket[i][1]
+                }
+            }
+        }
+        return undefined
+    }  // O(n)=>worst possible way// O(1) => best way
+
+    keys(){
+        const keysArray = []
+        for (let i=0; i<this.data.length; i++){
+            if(this.data[i]){
+                keysArray.push(this.data[i][0][0])
+            }
+        }
+        return keysArray
     }
+
 }
 
 const myHashTable = new HashTable(50)
-// myHashTable.set('grapes', 10000)
-// myHashTable.get('grapes')
-console.log(myHashTable._hash('grapes'))
+
+myHashTable.set('another', 10000)
+myHashTable.set('apples', 45)
+myHashTable.set('oranges', 2)
+
+
+// myHashTable.get('another')
+// console.log(myHashTable.get('another'))
+console.log(myHashTable.keys())
