@@ -15,6 +15,18 @@ function fibonacciMaster() { //O(n)
         }       
     }
 }
-const fasterFib = fibonacciMaster()
-console.log(fasterFib(20))
-console.log('calculations:' + calculations)
+// const fasterFib = fibonacciMaster()
+// console.log(fasterFib(20))
+// console.log('calculations:' + calculations)
+
+
+
+function fibonacciMaster2(n) { //O(n)
+    let answer = [0,1]
+    for(let i=2;i<=n;i++){
+        answer.push(answer[i-2]+answer[i-1])
+    }
+    return answer.pop()
+}
+
+console.log(fibonacciMaster2(50))
